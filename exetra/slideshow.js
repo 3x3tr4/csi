@@ -2,277 +2,178 @@
  * req. jquery, ui easing effects
  * IN
  *     $('#yourelement').slideshow({
- *         slideshow_transition: '',
- *         slideshow_easing: ''
+ *         transition: '',
+ *         opts.easing: ''
  *     });
  */
-
-// req. globals
-var slideshow_count = null;
-var slideshow_slideholder = null;
-var slideshow_direction = null;
-var slideshow_switchholder = null;
-var slideshow_allowscroll = true;
-var slideshow_timer = null;
-var slideshow_easing = null;
-var slideshow_slidedelay = null;
-var slideshow_transitionspeed = null;
-var slideshow_activeslide = 0;
-var slideshow_useslideswitch = 1;
-var slideshow_continuous = false;
-
-// initialize the slides
-jQuery.fn.slideshow = function()
+(function($)
 {
-    var slideshowholder = $(this[0]); // my element
-    var args = arguments[0] || {}; // passed arguments: images,headings,descriptions,links
-    slideshow_easing = args.slideshow_easing || 'linear';
-    slideshow_slidedelay = args.slideshow_slidedelay || 800;
-    slideshow_transitionspeed = args.slideshow_transitionspeed || 800;
-    slideshow_useslideswitch = args.slideshow_useslideswitch || true;
-    slideshow_continuous = args.slideshow_continuous || true;
-    var slidestotransform = slideshowholder.children('ul').children('li');
-    var slidecount = slidestotransform.length;
-    if (slidecount)
+    var the_switch = direction = timer = main = box = slides = null;
+    var cnt = act = 0;
+    var opts = {
+        allowscroll: true,
+        use_switch: true,
+        continuous: true,
+        easing: 'linear',
+        delay: 800,
+        transitionspeed: 800
+    };
+    function slideshow(options)
     {
-        if (slideshow_useslideswitch && slidecount > 1)
+        var args = arguments[0] || {};
+        $.extend(opts, options);
+        main = $(this);
+        box = main.children('ul');
+        slides = box.children('li');
+        cnt = slides.length;
+        if (cnt)
         {
-            slideshow_switchholder = $('<ol id="controls" class="list-item-4"></ol>');
-            slideshow_switchholder.appendTo(slideshowholder);
-        }
-        slidestotransform.css({
-            'display': 'none',
-            'position': 'static'
-        });
-        slidestotransform
-            .first()
-            .css('display', 'list-item');
-        // bind stop function to mouseover
-        slideshowholder.hover(
-            slideshow_stopScroll,
-            slideshow_allowScroll
-        );
-        var s;
-        for (var i = 0; i < slidecount; i++)
-        {
-            s = $(slidestotransform[i]);
-            /*if (i == 0)
+            if (opts.use_switch && cnt > 1)
             {
-                slidestotransform
-                    .parent()
-                    .append(
-                        slidestotransform
-                            .first()
-                            .clone()
-                            .css({
-                                'position': 'static',
-                                'display': 'block'
-                            })
-                    );
-            }*/
-            s.addClass('sl' + (i + 1));
-            if (slideshow_useslideswitch && slidecount > 1)
-            {
-                slideshow_switchholder
-                    .append(
-                        '<li id="controls' + (i + 1) + '">' +
-                        '<a href="#" onclick="slideshow_scrollToSlide(' + (i + 1) + ')">' +
-                        s.attr('title') +
-                        '</a></li>'
-                    );
+                the_switch = $('<ol id="controls" class="list-item-4"></ol>');
+                the_switch.appendTo(main);
             }
-        }
-        if (slideshow_useslideswitch && slidecount > 1)
-        {
-            slideshow_switchholder
-                .append('<li style="clear:both"></li>');
-            slideshow_switchholder
-                .children('#controls1')
-                .addClass('current');
-        }
-        // set globals
-        slideshow_count = slidecount;
-        slideshow_slideholder = slideshowholder.children('ul');
-        slideshow_direction = 'left';
-        if (slideshow_count > 1)
-        {
-            slideshow_timer = setTimeout(
-                'slideshow_scrollSlides()',
-                slideshow_slidedelay * 5
-            );
-        }
-    } else { // no slides
-        // slideshowholder.html('');
-    }
-};
-
-// scroll the slides
-function slideshow_scrollSlides()
-{
-    clearTimeout(slideshow_timer);
-    if (slideshow_continuous)
-    {
-        var act = slideshow_activeslide;
-        slideshow_activeslide = (slideshow_activeslide % slideshow_count) + 1;
-        slideshow_slideholder
-            .children('.sl' + slideshow_activeslide)
-            .css('position', 'static')
-            .fadeIn(
-                slideshow_transitionspeed / 2,
-                slideshow_easing,
-                function()
+            slides.css({
+                'display': 'none',
+                'position': 'static'
+            });
+            slides.first().css('display', 'list-item');
+            act = 1;
+            main.hover(stopScroll, allowScroll);
+            slides.each(function(i)
+            {
+                /*if (i == 0)
                 {
-                    slideshow_setSlideSwitch();
-                    slideshow_timer = setTimeout(
-                        'slideshow_scrollSlides()',
-                        slideshow_slidedelay * 4
+                    slides.parent().append(
+                        slides.first().clone().css({
+                            'position': 'static',
+                            'display': 'block'
+                        })
+                    );
+                }*/
+                $(this).addClass('sl' + ++i);
+                if (opts.use_switch && cnt > 1)
+                {
+                    the_switch.append('<li id="controls' + i + '">' + '<a href="#">' + $(this).attr('title') + '</a></li>');
+                    $('#controls' + i + ' a').on(
+                        'click',
+                        function()
+                        {
+                            scrollToSlide(i);
+                        }
                     );
                 }
-            );
-        slideshow_slideholder
-            .children('.sl' + act)
-            .css('position', 'absolute')
-            .fadeOut(
-                slideshow_transitionspeed / 2,
-                slideshow_easing
-            );
-    } else {
-        if (slideshow_activeslide >= slideshow_count)
-        {
-            slideshow_direction = '>';
-        }
-        if (slideshow_activeslide <= 1)
-        {
-            slideshow_direction = '<';
-        }
-        if (slideshow_allowscroll)
-        {
-            if (slideshow_direction == '<')
+            });
+            if (opts.use_switch && cnt > 1)
             {
-                slideshow_slideholder
-                    .children('.sl' + slideshow_activeslide)
-                    .fadeOut(
-                        slideshow_transitionspeed / 2,
-                        slideshow_easing
-                    );
-                slideshow_activeslide++;
-                slideshow_slideholder
-                    .children('.sl' + slideshow_activeslide)
-                    .fadeIn(
-                        slideshow_transitionspeed / 2,
-                        slideshow_easing,
-                        function()
-                        {
-                            slideshow_setSlideSwitch();
-                            slideshow_timer = setTimeout(
-                                'slideshow_scrollSlides()',
-                                slideshow_slidedelay * 4
-                            );
-                        }
-                    );
-            } else {
-                slideshow_slideholder
-                    .children('.sl' + slideshow_activeslide)
-                    .fadeOut(
-                        slideshow_transitionspeed / 2,
-                        slideshow_easing
-                    );
-                slideshow_activeslide--;
-                slideshow_slideholder
-                    .children('.sl' + slideshow_activeslide)
-                    .fadeIn(
-                        slideshow_transitionspeed / 2,
-                        slideshow_easing,
-                        function()
-                        {
-                            slideshow_setSlideSwitch();
-                            slideshow_timer = setTimeout(
-                                'slideshow_scrollSlides()',
-                                slideshow_slidedelay * 4
-                            );
-                        }
-                    );
+                the_switch.append('<li style="clear:both"></li>');
+                the_switch.children('#controls1').addClass('current');
+            }
+            direction = 'left';
+            if (cnt > 1)
+            {
+                timer = setTimeout(scrollSlides, opts.delay * 5);
+            }
+        }
+        return this;
+    };
+    function scrollSlides()
+    {
+        clearTimeout(timer);
+        if (opts.continuous)
+        {
+            // var out = slides.eq(act);
+            var act2 = act;
+            act = (act % cnt) + 1;
+            slides.eq(act-1).css('position', 'static').fadeIn(opts.transitionspeed / 2, opts.easing, function()
+            {
+                setSlideSwitch();
+                timer = setTimeout(scrollSlides, opts.delay * 4);
+            });
+            slides.eq(act2-1).css('position', 'absolute').fadeOut(opts.transitionspeed / 2, opts.easing);
+        } else
+        {
+            if (act >= cnt)
+            {
+                direction = '>';
+            }
+            if (act <= 1)
+            {
+                direction = '<';
+            }
+            if (opts.allowscroll)
+            {
+                if (direction == '<')
+                {
+                    slides.eq(act-1)
+                    // box.children('.sl' + act++)
+                    .fadeOut(opts.transitionspeed / 2, opts.easing);
+                    slides.eq(act++)
+                    //box.children('.sl' + act)
+                    .fadeIn(opts.transitionspeed / 2, opts.easing, function()
+                    {
+                        setSlideSwitch();
+                        timer = setTimeout(scrollSlides, opts.delay * 4);
+                    });
+                } else
+                {
+                    slides.eq(act-1).fadeOut(opts.transitionspeed / 2, opts.easing);
+                    slides.eq(act--).fadeIn(opts.transitionspeed / 2, opts.easing, function()
+                    {
+                        setSlideSwitch();
+                        timer = setTimeout(scrollSlides, opts.delay * 4);
+                    });
+                }
             }
         }
     }
-}
-
-// stop autoscroll
-function slideshow_stopScroll()
-{
-    if (slideshow_count != 1)
+    function stopScroll()
     {
-        slideshow_allowscroll = false;
-        clearTimeout(slideshow_timer);
+        if (cnt != 1)
+        {
+            opts.allowscroll = false;
+            clearTimeout(timer);
+        }
     }
-}
-
-// allow autoscroll
-function slideshow_allowScroll()
-{
-    if (slideshow_count != 1)
+    function allowScroll()
     {
-        slideshow_allowscroll = true;
-        slideshow_timer = setTimeout(
-            'slideshow_scrollSlides()',
-            slideshow_slidedelay
-        );
+        if (cnt != 1)
+        {
+            opts.allowscroll = true;
+            timer = setTimeout(scrollSlides, opts.delay);
+        }
     }
-}
-
-// scroll to specified slide
-function slideshow_scrollToSlide(i)
-{
-    slideshow_slideholder
-        .children('.sl' + slideshow_activeslide)
-        .stop()
-        .css('position', 'absolute')
-        .fadeOut(
-            slideshow_transitionspeed / 2,
-            slideshow_easing
-        );
-    slideshow_slideholder
-        .children('.sl' + i)
-        .css('position', 'static')
-        .fadeIn(
-            slideshow_transitionspeed / 2,
-            slideshow_easing,
-            function()
-            {
-                slideshow_setSlideSwitch();
-            }
-        );
-    slideshow_activeslide = i;
-}
-
-// set actual slide in the slideswitch
-function slideshow_setSlideSwitch()
-{
-    if (slideshow_useslideswitch)
+    function scrollToSlide(i)
     {
-        slideshow_switchholder
-            .children('.current')
-            .removeClass('current');
-        slideshow_switchholder
-            .children('#controls' + slideshow_activeslide)
-            .addClass('current');
+        slides.eq(i-1).css('position', 'static').fadeIn(opts.transitionspeed / 2, opts.easing, function()
+        {
+            setSlideSwitch();
+        });
+        slides.eq(act - 1).stop().css('position', 'absolute').fadeOut(opts.transitionspeed / 2, opts.easing);
+        act = i;
     }
-}
-
-// switch to next slide
-function slideshow_nextSlide()
-{
-    if (slideshow_count > slideshow_activeslide)
+    function setSlideSwitch()
     {
-        slideshow_scrollToSlide(slideshow_activeslide + 1);
+        if (opts.use_switch)
+        {
+            the_switch.children('.current').removeClass('current');
+            the_switch.children('#controls' + act).addClass('current');
+        }
     }
-}
-
-// switch to previous slide
-function slideshow_prevSlide()
-{
-    if (slideshow_activeslide > 1)
+    function nextSlide()
     {
-        slideshow_scrollToSlide(slideshow_activeslide - 1);
+        if (cnt > act)
+        {
+            scrollToSlide(act + 1);
+        }
     }
-}
+    function prevSlide()
+    {
+        if (act > 1)
+        {
+            scrollToSlide(act - 1);
+        }
+    }
+    $.fn.slideshow = slideshow;
+    $.fn.scrollToSlide = scrollToSlide;
+})(jQuery);

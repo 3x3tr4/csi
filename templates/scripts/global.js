@@ -26,8 +26,10 @@ $(document).ready(function()
     // PREVIEW IMAGE
     $('a.preview').on('mouseenter', function(e)
     {
-        var preview = $(this), alt = preview.parent().find('img').attr('alt');
-        desc = preview.parent().find('p').html(), pictograms = preview.parent().find('.pict').html();
+        var preview = $(this),
+        alt = preview.parent().find('img').attr('alt');
+        desc = preview.parent().find('p').html(),
+        pictograms = preview.parent().find('.pict').html();
         pictograms = pictograms.replace('nopreview', 'yespreview');
         pictograms = pictograms.replace('rel="ADD TO CART"', 'title="ADD TO CART"');
         pictograms = pictograms.replace('rel="CALCULATE PRICE"', 'title="CALCULATE PRICE"');
@@ -35,18 +37,32 @@ $(document).ready(function()
         pictograms = pictograms.replace('rel="LARGE PREVIEW"', 'title="LARGE PREVIEW"');
         pictograms = pictograms.replace('rel="REMOVE IMAGE"', 'title="REMOVE IMAGE"');
         pictograms = pictograms.replace('rel="EDIT FRIENDLY IMAGE"', 'title="EDIT FRIENDLY IMAGE"');
-        id_produkt = preview.parent().find('.id_produkt').html();
+        var el = preview.parent().find('.id_produkt');
+        if (el.length)
+        {
+            id_produkt = el.html();
+        } else {
+            var xx = preview.parent().find('.pict').html();
+            var x1 = xx.substr(
+                xx.search('id_image=') + 9
+            );
+            id_produkt = parseInt(
+                x1.substr(
+                    0,
+                    x1.search('&quot')
+                )
+            );
+        }
         previewLightbox = $('.image-lightbox');
 
         var au;
         au = $('#au').html();
         au = parseInt(au);
-        if (!isNaN(au))
+        if (! isNaN(au))
         {
             image = preview.parent().find('img').attr('src').replace('_2', '_4');
             image = image.replace('d=2', 'd=4');
-        } else
-        {
+        } else {
             image = preview.parent().find('img').attr('src').replace('_2', '_3');
             image = image.replace('d=2', 'd=3');
         }
@@ -60,19 +76,38 @@ $(document).ready(function()
         var leftpos = preview.position().left;
         if (leftpos < 100)
         {
-            leftpos = preview.offset().left;
+            var shift_left = $('.rightcol').length
+                ? $('.rightcol').offset().left
+                : $('#page').offset().left;
+            leftpos = preview.offset().left - shift_left;
             pictograms = pictograms.replace('yespreview', 'yespreview-offset');
         }
-        previewLightbox.html('<a style="cursor:pointer;" onclick=\'window.open("/img-detail/?id_image=' + id_produkt + '","mywindow","menubar=0,resizable=1,scrollbars=1,width=850,height=750").focus();\'>' + '<img src="' + image + '" alt="' + alt + '" title="' + alt + '"></a>' + '<p>' + desc + '</p>' + '<div style="position: relative;">' + '<div class="pict xpict">' + pictograms + '</div>' + '<div class="cs_addtocart" style="position: absolute; top:30px; display:none; width: 152px; text-align:center; background-color: #999999; color:#ffffff; padding:3px;" id="div_addtocart' + id_produkt + '">Added to cart</div>' + '</div>' + '<button onclick=\'window.open("/price-quote/?id_image=' + id_produkt + '","mywindow","menubar=0,resizable=1,scrollbars=1,width=850,height=750").focus();\'>Check license</button>' + '<form id=""></form>' + '<script language="javascript">' + '$(".xpict .item-1").click(function() { $(this).parent().next(".cs_addtocart").slideDown("normal", function() {});});</script>').css(
-        {
-            left : leftpos - leftMin,
-            top : preview.position().top - topMin,
-            display : 'block'
-        });
-        $('.image-lightbox').on('mouseleave', function()
-        {
-            previewLightbox.html('').hide();
-        });
+        previewLightbox
+            .html(
+                '<a style="cursor:pointer;" onclick=\'window.open("/img-detail/?id_image=' + id_produkt + '","mywindow","menubar=0,resizable=1,scrollbars=1,width=850,height=750").focus();\'>' +
+                '<img src="' + image + '" alt="' + alt + '" title="' + alt + '" /></a>' +
+                '<p>' + desc + '</p>' +
+                '<div style="position: relative;">' +
+                '<div class="pict xpict">' + pictograms + '</div>' +
+                '<div class="cs_addtocart" style="position: absolute; top:30px; display:none; width: 152px; text-align:center; background-color: #999999; color:#ffffff; padding:3px;" id="div_addtocart' + id_produkt + '">Added to cart</div>' +
+                '</div>' +
+                '<button onclick=\'window.open("/price-quote/?id_image=' + id_produkt + '","mywindow","menubar=0,resizable=1,scrollbars=1,width=850,height=750").focus();\'>Check license</button>' +
+                '<form id=""></form>' +
+                '<script language="javascript">' + '$(".xpict .item-1").click(function() { $(this).parent().next(".cs_addtocart").slideDown("normal", function() {});});</script>')
+            .css(
+                {
+                    left: leftpos - leftMin,
+                    top: preview.position().top - topMin,
+                    display: 'block'
+                }
+            );
+        $('.image-lightbox').on(
+            'mouseleave',
+            function()
+            {
+                previewLightbox.html('').hide();
+            }
+        );
         e.preventDefault();
     });
     // INVOICE DETAIL

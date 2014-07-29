@@ -27,14 +27,12 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="apple-touch-icon" href="exetra/img/appleicon.png" />
     <link type="text/css" href="exetra/e1.css" rel="stylesheet" />
-    <link type="text/css" href="exetra/fun.css" rel="stylesheet" />
     <link type="text/css" href="exetra/e2.css" rel="stylesheet" />
     <link type="text/css" href="exetra/art.css" rel="stylesheet" />
     <script type="text/javascript" src="exetra/exetra.js"></script>
     <script type="text/javascript" src="exetra/slideshow.js"></script>
     <style type="text/css">
-    ul {
-    select,
+    select, ul {
         height: 145px;
         overflow: auto;
         width: 280px;
@@ -76,6 +74,7 @@
         <div class="dev" id="dev-500">500</div>
         <div class="dev" id="dev-510">510</div>
         <div class="dev" id="dev-530">530</div>
+        <div class="dev" id="dev-540">540</div>
         <div class="dev" id="dev-565">565</div>
         <div class="dev" id="dev-567">567</div>
         <div class="dev" id="dev-580">580</div>
@@ -83,6 +82,7 @@
         <div class="dev" id="dev-640">640</div>
         <div class="dev" id="dev-650">650</div>
         <div class="dev" id="dev-670">670</div>
+        <div class="dev" id="dev-690">690</div>
         <div class="dev" id="dev-715">715</div>
         <div class="dev" id="dev-767">767</div>
         <div class="dev" id="dev-768">768</div>
@@ -123,7 +123,7 @@
             <a href="" class="logo">
                 <img src="http://www.cleggstockimage.com/templates/images/logo.png" alt="Cleggstock Image" />
             </a>
-            <button class="closebutton inheader" onclick="window.opener.focus(); window.close();">Close window</button>
+            <button class="closebutton imagedetail inheader" onclick="window.opener.focus(); window.close();">Close window</button>
             <div style="clear: both;"></div>
             <div class="desc">Please select the license options you require from below:</div>
         </div>
@@ -141,7 +141,7 @@
                             <th>Advertising - Print &amp; Mobile</th>
                         </tr>
                         <tr>
-                            <td>Specific&nbsp;use</td>
+                            <td>Specific&nbsp; use</td>
                             <th>Directory Advertising</th>
                         </tr>
                         <tr>
@@ -231,13 +231,13 @@
                     <label for="territories">Territories</label>
                     <ul style="margin-right: 1px; width: 279px;">
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group1" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk242" id="chk242" checked="checked"> <label for="chk242" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Worldwide</label></span></li>
-                        <li style="display: block; border-bottom: 1px dotted #c0c0c0; height: 1px; margin-bottom: 4px; padding: 3px; width: 250px; overflow: hidden;"><span style=""><label for="" style="color: #404040; background: none; width: 200px; margin-left: 4px;"></label></span></li>
+                        <li class="separator" style="display: block; border-bottom: 1px dotted #c0c0c0; height: 1px; margin-bottom: 4px; padding: 3px; width: 250px; overflow: hidden;"><span style=""><label for="" style="color: #404040; background: none; width: 200px; margin-left: 4px;"></label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group2" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk243" id="chk243"> <label for="chk243" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Europe (inside EU)</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group2" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk244" id="chk244"> <label for="chk244" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Europe (outside EU)</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group2" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk245" id="chk245"> <label for="chk245" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Asia</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group2" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk246" id="chk246"> <label for="chk246" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Africa</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group2" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk247" id="chk247"> <label for="chk247" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Americas</label></span></li>
-                        <li style="display: block; border-bottom: 1px dotted #c0c0c0; height: 1px; margin-bottom: 4px; padding: 3px; width: 250px; overflow: hidden;"><span style=""><label for="" style="color: #404040; background: none; width: 200px; margin-left: 4px;"></label></span></li>
+                        <li class="separator" style="display: block; border-bottom: 1px dotted #c0c0c0; height: 1px; margin-bottom: 4px; padding: 3px; width: 250px; overflow: hidden;"><span style=""><label for="" style="color: #404040; background: none; width: 200px; margin-left: 4px;"></label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk228" id="chk228"> <label for="chk228" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">United States</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk227" id="chk227"> <label for="chk227" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">United Kingdom</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk40" id="chk40"> <label for="chk40" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Canada</label></span></li>
@@ -247,7 +247,7 @@
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk6" id="chk6"> <label for="chk6" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">American Samoa</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk7" id="chk7"> <label for="chk7" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Andorra</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk8" id="chk8"> <label for="chk8" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Angola</label></span></li>
-                        <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk9" id="chk9"> <label for="chk9" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Anguilla</label></span></li>
+                        <li class="separator" style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk9" id="chk9"> <label for="chk9" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Anguilla</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk10" id="chk10"> <label for="chk10" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Antarctica</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk11" id="chk11"> <label for="chk11" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Antigua and Barbuda</label></span></li>
                         <li style="display: block; height: 15px; margin: 0; padding: 3px; width: 250px; overflow: hidden;"><span style=""><input style="float: left; width: 10px; border: none;" class="group3" onclick=" territories_submit('no_warning');  set_checkboxes(); " type="checkbox" name="chk12" id="chk12"> <label for="chk12" style="color: #404040; background: none; width: 200px; margin-left: 4px; margin-top: 2px;">Argentina</label></span></li>
@@ -513,7 +513,7 @@
                         <option value="9">Business Consulting / Services</option>
                         <option value="10">Calendar, Greeting Card, Poster Publishing, Retail Stationery</option>
                         <option value="11">Chemicals, Coatings, Materials</option>
-                        <option value="12">Communications Equipment / Services, ISP&#39;s</option>
+                        <option value="12">Communications Equipment / Services, ISP&#39; s</option>
                         <option value="13">Computer / I.T. Services</option>
                         <option value="14">Computer Hardware and Peripherals</option>
                         <option value="15">Computer Software</option>
@@ -559,7 +559,7 @@
                     <p class="price c" style="margin-bottom: 15px;">
                         Price: <strong>600.00</strong> USD
                     </p>
-                    <div class="cs_addtocart" style="position: absolute; left: 255px; top: 20px; display: none; background-color: #999999; color: #ffffff; padding: 3px; margin-top: 10px; width: 164px; float: right; text-align: center;" id="div_addtocart">Add&nbsp;</div>
+                    <div class="cs_addtocart" style="position: absolute; left: 255px; top: 20px; display: none; background-color: #999999; color: #ffffff; padding: 3px; margin-top: 10px; width: 164px; float: right; text-align: center;" id="div_addtocart">Add to cart</div>
                     <a id="button_addtocart" style="cursor: pointer;" onclick="jsrequest_addtocart('http://www.cleggstockimage.com/sys-jscall-addtocart/?id_item=1975&recalculate=&cart_item=&id_rights=28&start_date=2013/11/21&end_date=2013/11/22&price=600.00&territories_selected=242&industry=1','div_addtocart','opener');" class="button-blue">Add to cart</a>
                     <a href="http://www.cleggstockimage.com/price-quote/?id_image=1975" class="button-blue left">Recalculate price</a>
                 </div>
@@ -572,7 +572,7 @@
                         <th>Advertising - Print &amp; Mobile</th>
                     </tr>
                     <tr>
-                        <td>Specific&nbsp;use</td>
+                        <td>Specific&nbsp; use</td>
                         <th>Directory Advertising</th>
                     </tr>
                     <tr>

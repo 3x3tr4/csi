@@ -27,7 +27,6 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="apple-touch-icon" href="exetra/img/appleicon.png" />
     <link type="text/css" href="exetra/e1.css" rel="stylesheet" />
-    <!--link type="text/css" href="exetra/fun.css" rel="stylesheet" /-->
     <link type="text/css" href="exetra/e2.css" rel="stylesheet" />
     <link type="text/css" href="exetra/art.css" rel="stylesheet" />
     <script type="text/javascript" src="exetra/exetra.js"></script>
@@ -54,6 +53,7 @@
         <div class="dev" id="dev-500">500</div>
         <div class="dev" id="dev-510">510</div>
         <div class="dev" id="dev-530">530</div>
+        <div class="dev" id="dev-540">540</div>
         <div class="dev" id="dev-565">565</div>
         <div class="dev" id="dev-567">567</div>
         <div class="dev" id="dev-580">580</div>
@@ -61,6 +61,7 @@
         <div class="dev" id="dev-640">640</div>
         <div class="dev" id="dev-650">650</div>
         <div class="dev" id="dev-670">670</div>
+        <div class="dev" id="dev-690">690</div>
         <div class="dev" id="dev-715">715</div>
         <div class="dev" id="dev-767">767</div>
         <div class="dev" id="dev-768">768</div>
@@ -101,18 +102,7 @@
             <a href="" class="logo">
                 <img src="http://www.cleggstockimage.com/templates/images/logo.png" alt="Cleggstock Image" />
             </a>
-            <div class="arrow">
-                <input type="hidden" id="id_image" value="1975" />
-                <input type="hidden" id="next_image" value="" />
-                <input type="hidden" id="prev_image" value="" />
-                <!--a id="next_image_arrow" style="cursor: pointer;" onclick="window.location.href='http://www.cleggstockimage.com/img-detail/?id_image='+document.getElementById('next_image').value;" class="next">
-                    next<span> image</span>
-                </a>
-                <a id="prev_image_arrow" style="cursor: pointer;" onclick="window.location.href='http://www.cleggstockimage.com/img-detail/?id_image='+document.getElementById('prev_image').value;" class="prev">
-                    prev<span> image</span>
-                </a-->
-            </div>
-            <button class="closebutton imagedetail inheader" onclick="window.opener.focus(); window.close();">Close Window</button>
+            <button class="closebutton inheader" onclick="window.opener.focus(); window.close();">Close Window</button>
             <div style="clear: both"></div>
         </div>
         <div class="preview">
@@ -302,12 +292,11 @@
                 <div class="rightcol"></div>
             </div>
         </div>
+        <p class="closebuttonholder imagedetail">
+            <button class="closebutton" onclick="window.opener.focus(); window.close();">Close Window</button>
+        </p>
     </div>
     <script src="http://www.cleggstockimage.com/templates/scripts/jquery-easyslider-1.7.js"></script>
     <script src="http://www.cleggstockimage.com/templates/scripts/global.js"></script>
-
-    <p class="closebuttonholder imagedetail">
-        <button class="closebutton" onclick="window.opener.focus(); window.close();">Close Window</button>
-    </p>
 </body>
 </html>

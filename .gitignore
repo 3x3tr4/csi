@@ -1,3 +1,6 @@
 .project
 .git
+.gitignore
 _media
+3rd_party
+exetra/re

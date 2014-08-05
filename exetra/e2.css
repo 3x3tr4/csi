@@ -14,8 +14,7 @@
 	margin-top: 0 ;
 }
 
-#page.fluid #content .content-in .header > *,
-#content .content-in .content .rightcol > .oneitem,
+#content .content-in .rightcol > .oneitem,
 #content .content-in .rightcol #form_login .item:first-child,
 #content .home-content > *,
 .lightbox .preview .search .head,
@@ -35,71 +34,28 @@
 #header .menu {
     top: 49px;
 }
-#content .home-desc .search {
-    border: solid #dbdbdb 1px;
-    border-radius: 3px;
-    width: 285px;
-    padding: 3px;
-}
-#content .home-desc .search input {
-    width: 240px;
-    border: none;
-}
-#content .home-desc .search button {
-    width: 25px;
-    height: 26px;
-    font-size: 0;
-    border: none;
-    background: #ffffff url('img/search.png') no-repeat center center;
-}
-#content .home-desc .search button:hover {
-    background: #ffffff url('img/search.png') no-repeat center center;
-}
 #content .home-content {
     padding: 20px 0;
 }
 #content .content-in .header {
 	padding-right: 20px;
-    /*margin-bottom: 20px;*/
     margin-bottom: 0;
     border-radius: 0;
-}
-#content .content-in .header.c {
-	margin-bottom: 0;
-}
-#page #content .content-in .header form {
-    display: block;
 }
 #page #content .content-in .header * {
     font-size: 14px;
     white-space: nowrap;
 }
+#page #content .content-in .header form {
+    display: block;
+}
+
+#content.search .content-in .header {
+    padding-left: 20px;
+    padding-right: 20px;
+}
 #content.search .content-in .header h1 {
     display: none;
-}
-#content .content-in .header select {
-    /*padding-top: 5px;*/
-    /*vertical-align: baseline;*/
-}
-#content .content-in .header select.small {
-    width: auto;
-    padding-right: 1px;
-}
-#content .content-in .header .item label {
-    vertical-align: middle;
-}
-#content .content-in .header .resp-search input {
-    margin-left: 3px;
-    float: left;
-}
-#content .content-in .content {
-    padding: 20px;
-}
-#page.fluid #content.search .content {
-    padding-top: 0;
-}
-#resp-subpagebenefits {
-    clear: both;
 }
 
 /* footer */
@@ -138,6 +94,7 @@
 }
 #footer .in .box ul li {
     border-bottom: solid #bbbbbb 1px;
+    font-size: 14px;
 }
 #footer .in .box ul li:last-child {
     border-bottom: none;
@@ -147,7 +104,6 @@
     line-height: 40px;
     height: 40px;
     display: block;
-    font-size: 14px;
 }
 #footer .in .box ul li img {
     display: none;
@@ -166,7 +122,6 @@
 #footer .in #logo_left,
 #footer .in #logo_right {
     height: auto;
-    background: url(img/dottedborder.png) left bottom repeat-x;
     padding: 10px 0 0 0;
     height: 80px;
 }
@@ -215,7 +170,10 @@
     background: none repeat scroll 0% 0% rgb(193, 193, 193);
 }
 
-/**/
+/* home */
+#content .home-content ul.country {
+    font-size: 14px;
+}
 #content .home-content ul.country > div.pick-more-keywords {
     display: block;
     background-color: #bbbbbb;
@@ -249,49 +207,45 @@
 #content .home-content ul > div {
     display: none;
 }
-#content .home-info p a,
-#page.fluid #content .home-info p a {
-    color: #696969;
-}
-#content .home-desc h1 {
-    color: #686868;
-    line-height: 34px;
-    -webkit-text-rendering: auto;
-}
 
 /* content - in */
-#content .content-in .content.general_content > p {
+#content .content-in .general_content > p {
     margin: 10px 0;
     font-size: 13px;
 }
-#content .content-in .content.general_content > p:first-child {
+#content .content-in .general_content .rightcol > div:first-child {
+	padding: 0 20%;
+}
+#content .content-in .general_content > p:first-child {
     text-align: justify;
     margin: 0 0 20px;
 }
 #content .content-in .rightcol {
     font-size: 14px;
 }
-#content .content-in .content .rightcol {
-	width: 77%; /* -> 1140 */
-	width: inherit;
-}
-#content .content-in .rightcol {
-	width: 760px;
-}
-
-#content .content-in .rightcol .purchase-item .desc {
+#content .content-in .rightcol .head,
+.fluid #content .content-in .rightcol .head {
 	font-size: 14px;
 }
+#content .content-in .rightcol .purchase-item .desc,
+#content .content-in .rightcol .purchase-item table tr td,
+#content .content-in .rightcol .purchase-item table tr th {
+    font-size: 13px;
+}
+#content .content-in .rightcol .purchase-item .desc {
+    text-align: left;
+}
 #content .content-in .rightcol .purchase-item table + div {
-	/*width: auto !important;*/
     padding-left: 0 !important;
 }
 #content .content-in .rightcol .purchase-item table + div p + p span {
 	margin-left: 3px;
+	vertical-align: middle;
 	white-space: nowrap;
 }
 #content .content-in .rightcol .purchase-item table + div p + p a.link {
 	display: block;
+    vertical-align: middle;
     text-align: right;
 }
 #content .content-in .rightcol .purchase-item table + div p input:last-child {
@@ -303,31 +257,33 @@
 #content .content-in .rightcol .purchase-item table + div div + div {
 	display: block;
 }
-#page.fluid #content .content-in .header > .item,
-#page.fluid #content .content-in .header > form {
+.fluid #content .content-in .header > .item,
+.fluid #content .content-in .header > form {
+	line-height: 34px;
     float: right;
-    margin: 0;
-    padding: 15px 0 0 15px !important;
-    width: 15%;
+    margin: 15px 20px 0 15px !important;
+    padding: 0 !important;
+    width: auto;
 }
-#page.fluid #content .content-in .header > .resp-search {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+.fluid #content .content-in .header .item label {
+    vertical-align: middle;
 }
-.fluid #content .content-in .rightcol {
-    float: right;
-    width: 80%;
-    width: 77%;
-    padding-left: 0;
+.fluid #content .content-in .header .item input,
+.fluid #content .content-in .header form {
+    position: static;
 }
-.fluid #content .content-in .rightcol .head {
-    padding-left: 4%;
-    height: auto;
+.fluid #content .content-in .header select {
+    vertical-align: top;
+    height: 34px !important;
+    padding-top: 3px !important;
+    /*appearance: listbox !important;*/
+    -webkit-appearance: listbox !important;
+    -moz-appearance: listbox !important;
+    -o-appearance: listbox !important;
+    -ms-appearance: listbox !important;
 }
-#content .content-in .rightcol .head {
-	height: auto;
-    background-color: #f5f5f5;
-    margin-left: 0;
+#content .content-in .header select.small {
+    /*padding-top: 1px;*/
 }
 
 /* cart */
@@ -353,18 +309,19 @@
     display: none;
 }
 #content .content-in .leftcol {
-    width: 20% !important;
-    display: block;
-    font-size: 14px;
-}
-#content .content-in .leftcol .head,
-#content .content-in .leftcol .head a {
-    height: 50px;
-    line-height: 50px;
-    padding: 0;
+	font-size: 14px;
 }
 #content .content-in .leftcol .head {
+    padding: 0;
     font-size: 16px;
+}
+#content .content-in .leftcol .head,
+#content .content-in .rightcol .head,
+.fluid #content .content-in .rightcol .head,
+#content .content-in .leftcol .head a,
+#content .content-in .rightcol .head a {
+    height: 50px;
+    line-height: 50px;
 }
 #content .content-in .leftcol .head a {
 	display: block;
@@ -377,22 +334,15 @@
     margin-top: 0;
     margin-left: 0;
 }
-
-#content .content-in .rightcol .head,
-.fluid #content .content-in .rightcol .head,
 #content .content-in .leftcol .section .head,
 #content .cart .leftcol .section .head,
 #content .content-in .cart .rightcol .section .head {
-    padding: 0 20px;
-    line-height: 49px;
     height: auto;
+    line-height: 49px;
+    padding: 0 20px;
 }
-#content .content-in .rightcol .head,
 .fluid #content .content-in .rightcol .head {
-    line-height: 50px;
-}
-#content .content-in .rightcol .head-2 {
-    height: 50px;
+    padding: 0 20px;
 }
 #content .cart .leftcol .section label.licence {
     float: left;
@@ -472,45 +422,29 @@
 #content .content-in .rightcol .item {
     padding: 0 20% 20px;
 }
-#content .content-in .rightcol .invoices .item {
-	padding: 0 !important;
-}
-#content .content-in .rightcol .head-3 {
-    padding: 5px 0;
-}
+
+/* invoices */
 #content .content-in .rightcol .invoices .item-detail {
-    margin-left: 4%;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+	position: relative;
     width: auto !important;
     background-image: none;
     background-color: #f8f8f8;
-    min-height: 0;
-    position: relative;
 }
 #content .content-in .rightcol .invoices .item-detail .left {
-    width: 30%;
-    background-color: #e8e8e8;
-    padding: 2%;
-    position: absolute;
-    float: none;
+	position: absolute;
     top: 0;
     bottom: 0;
+    background-color: #e8e8e8;
 }
-#content .content-in .rightcol .invoices .item-detail .right {
-    padding: 2%;
-    width: 62%;
+
+#content .content-in .rightcol .invoices .item-detail .left p,
+#content .content-in .rightcol .invoices .item-detail .right .desc,
+#content .content-in .rightcol .invoices .item-detail .right table tr td,
+#content .content-in .rightcol .invoices .item-detail .right table tr th,
+#content .content-in .rightcol .invoices .item-detail .right table tr th.h2 {
+	font-size: 14px;
 }
-#content .content-in .rightcol .head-3 a,
-#content .content-in .rightcol .invoices .item div {
-    width: 19% !important;
-    padding: 0 !important;
-    text-align: center;
-}
-#content .content-in .content .rightcol .invoices {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
+
 #content .content-in .rightcol input#login_password_md5 + input + .item {
 	width: auto;
 }
@@ -552,21 +486,19 @@
     margin-bottom: 0;
 }
 #content .content-in .content.general_content > .rightcol {
-    padding-left: 0;
-    padding-right: 0;
     padding-bottom: 0 !important;
 }
 #content .content-in .general_content .rightcol {
     width: auto !important;
     float: none;
 }
-#content .content-in .content .rightcol > #form_register {
+#content .content-in .rightcol > #form_register {
     border-bottom: none;
 }
-#content .content-in .content .rightcol > .head:first-child + #form_register {
+#content .content-in .rightcol > .head:first-child + #form_register {
     margin-bottom: 20px;
 }
-#content .content-in .content .rightcol > .form_contact {
+#content .content-in .rightcol > .form_contact {
     margin-bottom: 20px;
     margin-bottom: 15px;
 }
@@ -590,9 +522,6 @@
 	padding: 0;
 	float: right;
 	width: 94%;
-}
-#content .content-in .rightcol .email-item ul li input {
-	height: initial !important;
 }
 #content .content-in .rightcol .item a {
     color: #5187B6;
@@ -643,40 +572,62 @@ form#form_login div.item a.forgotpassword,
     display: none;
 }
 
-/* image-content */
+/* image list */
 .image-content {
     padding-bottom: 20px;
+    position:relative;
 }
 .image-content.search {
     padding-bottom: 20px;
 }
 .image-content.search p.info {
     height: auto;
-    padding: 20px 0;
+    padding: 0 0 20px;
+}
+.image-content.search a.button {
+    width: 180px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.image-content .filter-box ul li {
+    padding-bottom: 30px;
 }
 .image-content a.top,
 .image-content.search .arrow {
     position: static;
 }
-.image-content .filter ul li {
-    width: 18%;
-    padding: 0 24px;
-    margin: 0 15px 15px 0;
-    height: auto;
+.image-content .arrow a {
+	height: 36px;
+	line-height: 36px;
 }
-.image-list {
+.image-content .arrow > div {
+    padding-top: 0 !important;
+}
+.image-content .arrow span.paging.current {
+    padding: 10px 14px;
+}
+.image-list {/*lightbox.htm*/
     text-align: center;
+}
+.search .image-list {/*search(-filter).htm*/
+    text-align: left;
 }
 .image-list li {
     display: inline-block;
-    float: none;
     height: auto;
+    float: none;
     margin-left: 20px;
     margin-right: 20px;
     vertical-align: top;
 }
-
-/* image list */
+.search .image-list li {
+	display: list-item;
+    float: left;
+    margin: 0 40px 40px 0;
+}
+.image-list li .image img {
+    vertical-align: middle;
+}
 .image-list li .pict {
     margin-bottom: 9px !important;
 }
@@ -708,6 +659,7 @@ form#form_login div.item a.forgotpassword,
     width: 100%;
     height: 40px;
     line-height: 40px;
+    font-size: 16px;
     margin-top: 8px;
 }
 .lightbox .header .arrow {
@@ -720,12 +672,28 @@ form#form_login div.item a.forgotpassword,
     height: 32px;
     line-height: 32px;
 }
+.lightbox-category {
+    width: 323px;
+    height: 150px !important;
+}
 .lightbox-category a.close {
-    background-position: 50% 50%;
     width: 32px;
     height: 32px;
-    top: 5px;
-    right: 5px;
+    background-position: 100% 0;
+    background-size: 100%;
+}
+.lightbox-category input,
+.lightbox-category select {
+    width: 100%;
+}
+.lightbox-category button
+/*< styles.css #content .content-in .rightcol button !*/ {
+    top: 16px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    float: none !important;
+    margin: 0 auto;
+    font-size: 16px !important;
 }
 .lightbox #popup {
     display: block !important;
@@ -742,8 +710,9 @@ form#form_login div.item a.forgotpassword,
     font-size: 14px;
 }
 .lightbox .preview .rightcol {
-    padding: 0;
+	width: auto;
     border-top: none;
+    padding: 0;
 }
 .lightbox .preview .rightcol p.c {
     display: block;
@@ -753,12 +722,31 @@ form#form_login div.item a.forgotpassword,
     padding-top: 0;
 }
 .lightbox .preview .rightcol a.button-blue {
-    padding: 5px 0;
-    width: 200px;
+	width: 180px;
+    height: 40px;
+    line-height: 40px;
+}
+.lightbox .preview .rightcol ul li a {
+    background-position: -180px 0px !important;
+    padding-left: 50px;
+    color: #a0a0a0;
+    text-decoration: none;
+    line-height: 40px;
+}
+.lightbox .preview .rightcol ul li a:hover {
+    background-position: -180px -40px !important;
+    color: #000000;
+}
+.lightbox .preview .rightcol ul li.second a {
+    line-height: 30px;
+}
+.lightbox .preview .rightcol ul li.second a span {
+    font-size: 12px;
 }
 .lightbox .preview .rightcol ul li.second span a {
-    top: 14px !important;
-    width: 180px;
+    top: 18px !important;
+    padding-left: 0;
+    margin-left: 50px;
 }
 .lightbox .preview .leftcol.fullwidth > br,
 .lightbox .preview .leftcol.fullwidth + .rightcol {
@@ -774,10 +762,8 @@ form#form_login div.item a.forgotpassword,
     width: 152%;
 }
 .lightbox .preview .leftcol .desc table tr td {
+    padding-right: 30px;
     white-space: nowrap;
-}
-.lightbox .preview .leftcol .desc table tr th {
-    padding-left: 30px;
 }
 .lightbox .preview .leftcol .desc table tr th span {
     display: inline-block;
@@ -827,7 +813,10 @@ form#form_login div.item a.forgotpassword,
     height: auto;
 }
 
-/* lightbox - pricing */
+/* lightbox - pricing step 1 */
+.lightbox .pricing .leftcol table {
+    font-size: 14px;
+}
 .lightbox .pricing .rightcol {
     width: 57%;
     font-size: 14px;
@@ -848,14 +837,13 @@ form#form_login div.item a.forgotpassword,
     float: right;
     margin-right: 0;
     padding: 5px;
+    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 .lightbox .pricing .rightcol .item label {
 	width: auto;
-    float: left;
-    background-position: 0 19px;
+    background: none;
 }
 .lightbox .pricing .rightcol .item input {
     margin-bottom: 15px;
@@ -868,7 +856,7 @@ form#form_login div.item a.forgotpassword,
 }
 .lightbox .pricing .rightcol > .info {
    clear: both;
-   margin-right: 20px;
+   margin-right: 0;
 }
 .lightbox .pricing .rightcol .item.noheight {
     padding-bottom: 0;
@@ -889,25 +877,26 @@ form#form_login div.item a.forgotpassword,
 }
 .lightbox .pricing .rightcol .item.territories ul {
     height: 300px;
+    /*padding-top: 0;*/
+    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box;
 }
 .lightbox .pricing .rightcol .item.territories ul li {
-    height: auto !important;
-    height: 30px !important;
+	height: auto !important;
+    padding: 5px 3px !important;
 }
 .lightbox .pricing .rightcol .item.territories ul li.separator {
     height: 1px !important;
+    padding: 3px !important;
 }
 .lightbox .pricing .rightcol .item.territories ul label {
    margin: 0 0 0 8px !important;
-   height: 24px;
-   line-height: 24px;
+   line-height: 1;
    background: none;
 }
 .lightbox .pricing .rightcol .item.territories input {
-    height: 24px !important;
+    line-height: 1;
     margin: 0;
     padding: 0 !important;
 }
@@ -924,13 +913,36 @@ form#form_login div.item a.forgotpassword,
 }
 .lightbox .pricing .rightcol a.button-blue {
     width: 180px;
-    height: 38px;
-    line-height: 38px;
-    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
 }
-
+.lightbox .pricing .rightcol a.button-blue.left {
+    float: none !important;
+    margin: 0 auto;
+}
+.lightbox .pricing .rightcol a.button-blue + a.button-blue.left {
+	float: left !important;
+	margin: 0;
+}
+.lightbox .cs_addtocart {
+	top: 87px !important;
+    left: 50px;
+    width: 180px !important;
+    margin-top: 10px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.lightbox .pricing .cs_addtocart {
+	top: 148px !important;
+	right: 0;
+	left: auto !important;
+}
 .lightbox .pricing .leftcol {
     padding-right: 0 !important;
+}
+.lightbox .pricing .leftcol p {
+    font-size: 13px;
 }
 .lightbox .pricing .leftcol span.h2 {
     margin: 15px 0;

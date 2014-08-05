@@ -66,22 +66,28 @@ $(document).ready(function()
             image = preview.parent().find('img').attr('src').replace('_2', '_3');
             image = image.replace('d=2', 'd=3');
         }
-        if (preview.hasClass('vertical'))
+        // if (preview.parent().has('.vertical').length)
+        var xx = 0;
+        var yy;
+        if ((yy = preview.parent().find('.vertical')).length)
         {
-            var leftMin = 100, topMin = 100;
-        } else
+            xx = parseInt(yy.html());
+        }
+        if (xx == 1)
         {
-            var leftMin = 100, topMin = 5;
+            var leftMin = 92.5, //100,
+                topMin = 85; //100;
+        } else {
+            var leftMin = 100,
+                topMin = 25; //5;
         }
         var leftpos = preview.position().left;
         if (leftpos < 100)
         {
-            var shift_left = $('.rightcol').length
-                ? $('.rightcol').offset().left
-                : $('#page').offset().left;
-            leftpos = preview.offset().left - shift_left;
+            leftpos = 71; //preview.offset().left;
             pictograms = pictograms.replace('yespreview', 'yespreview-offset');
         }
+
         previewLightbox
             .html(
                 '<a style="cursor:pointer;" onclick=\'window.open("/img-detail/?id_image=' + id_produkt + '","mywindow","menubar=0,resizable=1,scrollbars=1,width=850,height=750").focus();\'>' +
